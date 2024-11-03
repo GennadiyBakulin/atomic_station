@@ -16,13 +16,13 @@ public class NuclearStation {
   private final ReactorDepartment reactorDepartment;
 
   private BigDecimal totalAmountOfEnergyGenerated = ZERO;
-  private BigDecimal amountOfEnergyGeneratedForYear = ZERO;
 
   public NuclearStation(ReactorDepartment reactorDepartment) {
     this.reactorDepartment = reactorDepartment;
   }
 
-  public void startYear() throws ReactorWorkException {
+  public void startYear() {
+    BigDecimal amountOfEnergyGeneratedForYear = ZERO;
     log.info("Атомная станция начала работу");
     for (int i = 0; i < 365; i++) {
       try {
@@ -32,12 +32,18 @@ public class NuclearStation {
         reactorDepartment.stop();
       } catch (NuclearFuelIsEmptyException e) {
         log.info("Внимание! Происходят работы на атомной станции! Электричества нет!");
+      } catch (ReactorWorkException e) {
+        log.info(e.getMessage());
       }
     }
-
     log.info("Атомная станция закончила работу. За год Выработано {} киловатт/часов",
         amountOfEnergyGeneratedForYear);
     totalAmountOfEnergyGenerated = totalAmountOfEnergyGenerated.add(amountOfEnergyGeneratedForYear);
-    amountOfEnergyGeneratedForYear = ZERO;
+  }
+
+  public void start(int year) {
+    for (int i = 0; i < year; i++) {
+      startYear();
+    }
   }
 }
