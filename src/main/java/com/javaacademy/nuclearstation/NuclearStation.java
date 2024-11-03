@@ -5,7 +5,9 @@ import static java.math.BigDecimal.ZERO;
 import com.javaacademy.nuclearstation.reactordepartment.ReactorDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
+import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
 import java.math.BigDecimal;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -13,21 +15,14 @@ import org.springframework.stereotype.Component;
  * Класс - Атомная станция.
  */
 @Slf4j
+@RequiredArgsConstructor
 @Component
 public class NuclearStation {
 
   private final ReactorDepartment reactorDepartment;
+  private final SecurityDepartment securityDepartment;
   private BigDecimal totalAmountOfEnergyGenerated = ZERO;
   private int accidentCountAllTime;
-
-  /**
-   * Конструктор класса.
-   *
-   * @param reactorDepartment - реакторный цех.
-   */
-  public NuclearStation(ReactorDepartment reactorDepartment) {
-    this.reactorDepartment = reactorDepartment;
-  }
 
   /**
    * Метод - запуска годового цикла работы станции.
@@ -50,6 +45,7 @@ public class NuclearStation {
     log.info("Атомная станция закончила работу. За год Выработано {} киловатт/часов",
         amountOfEnergyGeneratedForYear);
     totalAmountOfEnergyGenerated = totalAmountOfEnergyGenerated.add(amountOfEnergyGeneratedForYear);
+    securityDepartment.reset();
   }
 
   /**
