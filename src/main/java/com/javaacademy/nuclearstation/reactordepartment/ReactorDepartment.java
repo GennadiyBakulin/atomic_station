@@ -1,7 +1,7 @@
-package com.javaacademy.atomicstation.reactordepartment;
+package com.javaacademy.nuclearstation.reactordepartment;
 
-import com.javaacademy.atomicstation.reactordepartment.exception.NuclearFuelIsEmptyException;
-import com.javaacademy.atomicstation.reactordepartment.exception.ReactorWorkException;
+import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
+import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
 import java.math.BigDecimal;
 import org.springframework.stereotype.Component;
 

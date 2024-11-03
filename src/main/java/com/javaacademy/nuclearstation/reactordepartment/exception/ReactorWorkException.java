@@ -1,4 +1,4 @@
-package com.javaacademy.atomicstation.reactordepartment.exception;
+package com.javaacademy.nuclearstation.reactordepartment.exception;
 
 public class ReactorWorkException extends Exception {
 

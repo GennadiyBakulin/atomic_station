@@ -1,4 +1,4 @@
-package com.javaacademy.atomicstation;
+package com.javaacademy.nuclearstation;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
