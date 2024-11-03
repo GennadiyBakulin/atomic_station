@@ -3,7 +3,6 @@ package com.javaacademy.nuclearstation.reactordepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
 import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
-import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -26,12 +25,12 @@ public class ReactorDepartment {
    *                                     реактора.
    * @throws NuclearFuelIsEmptyException - выбрасывается каждый 100 раз запуска реактора.
    */
-  public BigDecimal run() throws ReactorWorkException, NuclearFuelIsEmptyException {
+  public long run() throws ReactorWorkException, NuclearFuelIsEmptyException {
     checkIsNotWorkingReactor();
     counterLaunch++;
     checkEveryHundredRuns();
     isWorking = true;
-    return BigDecimal.valueOf(10_000_000);
+    return 10_000_000;
   }
 
   /**

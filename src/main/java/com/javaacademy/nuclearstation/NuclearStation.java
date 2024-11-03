@@ -1,12 +1,9 @@
 package com.javaacademy.nuclearstation;
 
-import static java.math.BigDecimal.ZERO;
-
 import com.javaacademy.nuclearstation.reactordepartment.ReactorDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
 import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
-import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -21,20 +18,19 @@ public class NuclearStation {
 
   private final SecurityDepartment securityDepartment;
   private final ReactorDepartment reactorDepartment;
-  private BigDecimal totalAmountOfEnergyGenerated = ZERO;
+  private long totalAmountOfEnergyGenerated;
   private int accidentCountAllTime;
 
   /**
    * Метод - запуска годового цикла работы станции.
    */
   private void startYear() {
-    BigDecimal amountOfEnergyGeneratedForYear = ZERO;
+    long amountOfEnergyGeneratedForYear = 0L;
     log.info("Атомная станция начала работу");
     for (int i = 0; i < 365; i++) {
       try {
-        BigDecimal amountOfEnergyGeneratedPerDay = reactorDepartment.run();
-        amountOfEnergyGeneratedForYear = amountOfEnergyGeneratedForYear
-            .add(amountOfEnergyGeneratedPerDay);
+        long amountOfEnergyGeneratedPerDay = reactorDepartment.run();
+        amountOfEnergyGeneratedForYear += amountOfEnergyGeneratedPerDay;
         reactorDepartment.stop();
       } catch (NuclearFuelIsEmptyException e) {
         log.info("Внимание! Происходят работы на атомной станции! Электричества нет!");
@@ -44,7 +40,7 @@ public class NuclearStation {
     }
     log.info("Атомная станция закончила работу. За год Выработано {} киловатт/часов",
         amountOfEnergyGeneratedForYear);
-    totalAmountOfEnergyGenerated = totalAmountOfEnergyGenerated.add(amountOfEnergyGeneratedForYear);
+    totalAmountOfEnergyGenerated += amountOfEnergyGeneratedForYear;
     log.info("Количество инцидентов за год: {}", securityDepartment.getCountAccidents());
     securityDepartment.reset();
   }

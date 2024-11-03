@@ -1,0 +1,11 @@
+france:
+  name-of-country: France
+  price: 0.5
+  percentage: 0.99
+  currency: euro
+
+morocco:
+  name-of-country: Morocco
+  price-base: 5
+  price-increased: 6
+  currency: dirham
