@@ -9,18 +9,28 @@ import java.math.BigDecimal;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+/**
+ * Класс - Атомная станция.
+ */
 @Slf4j
 @Component
 public class NuclearStation {
 
   private final ReactorDepartment reactorDepartment;
-
   private BigDecimal totalAmountOfEnergyGenerated = ZERO;
 
+  /**
+   * Конструктор класса.
+   *
+   * @param reactorDepartment - реакторный цех.
+   */
   public NuclearStation(ReactorDepartment reactorDepartment) {
     this.reactorDepartment = reactorDepartment;
   }
 
+  /**
+   * Метод - запуска годового цикла работы станции.
+   */
   public void startYear() {
     BigDecimal amountOfEnergyGeneratedForYear = ZERO;
     log.info("Атомная станция начала работу");
@@ -41,6 +51,11 @@ public class NuclearStation {
     totalAmountOfEnergyGenerated = totalAmountOfEnergyGenerated.add(amountOfEnergyGeneratedForYear);
   }
 
+  /**
+   * Метод - запускает в работу атомную станцию в количестве лет указанных в аргументе метода.
+   *
+   * @param year - количество лет работы станции.
+   */
   public void start(int year) {
     for (int i = 0; i < year; i++) {
       startYear();
