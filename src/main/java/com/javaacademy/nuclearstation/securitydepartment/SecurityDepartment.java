@@ -20,4 +20,8 @@ public class SecurityDepartment {
   public void addAccident() {
     accidentCountPeriod++;
   }
+
+  public int getCountAccidents() {
+    return this.accidentCountPeriod;
+  }
 }
