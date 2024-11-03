@@ -32,4 +32,15 @@ public class ReactorDepartment {
     }
   }
 
+  public void stop() throws ReactorWorkException {
+    checkIsWorkingReactor();
+    isWorking = false;
+  }
+
+  private void checkIsWorkingReactor() throws ReactorWorkException {
+    if (!isWorking) {
+      throw new ReactorWorkException("Реактор уже выключен");
+    }
+  }
+
 }
