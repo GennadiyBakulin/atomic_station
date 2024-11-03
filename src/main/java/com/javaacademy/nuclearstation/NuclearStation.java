@@ -18,6 +18,7 @@ public class NuclearStation {
 
   private final ReactorDepartment reactorDepartment;
   private BigDecimal totalAmountOfEnergyGenerated = ZERO;
+  private int accidentCountAllTime;
 
   /**
    * Конструктор класса.
@@ -31,7 +32,7 @@ public class NuclearStation {
   /**
    * Метод - запуска годового цикла работы станции.
    */
-  public void startYear() {
+  private void startYear() {
     BigDecimal amountOfEnergyGeneratedForYear = ZERO;
     log.info("Атомная станция начала работу");
     for (int i = 0; i < 365; i++) {
@@ -60,5 +61,14 @@ public class NuclearStation {
     for (int i = 0; i < year; i++) {
       startYear();
     }
+  }
+
+  /**
+   * Метод - увеличивает поле accidentCountAllTime количество инцидентов на count.
+   *
+   * @param count - количество новых инцидентов.
+   */
+  private void incrementAccident(int count) {
+    accidentCountAllTime += count;
   }
 }
