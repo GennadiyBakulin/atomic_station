@@ -21,6 +21,11 @@ public class SecurityDepartment {
     accidentCountPeriod++;
   }
 
+  /**
+   * Метод получения инцидентов за период.
+   *
+   * @return - количество инцидентов за все время.
+   */
   public int getCountAccidents() {
     return this.accidentCountPeriod;
   }
