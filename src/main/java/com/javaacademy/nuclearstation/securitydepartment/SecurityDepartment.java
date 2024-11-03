@@ -35,7 +35,7 @@ public class SecurityDepartment {
    * @return - количество инцидентов за все время.
    */
   public int getCountAccidents() {
-    return this.accidentCountPeriod;
+    return accidentCountPeriod;
   }
 
   /**

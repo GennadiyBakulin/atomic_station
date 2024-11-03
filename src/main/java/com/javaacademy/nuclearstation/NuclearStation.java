@@ -57,6 +57,7 @@ public class NuclearStation {
     for (int i = 0; i < year; i++) {
       startYear();
     }
+    log.info("Количество инцидентов за всю работу станции: {}", accidentCountAllTime);
   }
 
   /**
