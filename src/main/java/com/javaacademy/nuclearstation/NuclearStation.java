@@ -19,8 +19,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class NuclearStation {
 
-  private final ReactorDepartment reactorDepartment;
   private final SecurityDepartment securityDepartment;
+  private final ReactorDepartment reactorDepartment;
   private BigDecimal totalAmountOfEnergyGenerated = ZERO;
   private int accidentCountAllTime;
 
@@ -65,6 +65,6 @@ public class NuclearStation {
    * @param count - количество новых инцидентов.
    */
   public void incrementAccident(int count) {
-    accidentCountAllTime += count;
+    this.accidentCountAllTime += count;
   }
 }

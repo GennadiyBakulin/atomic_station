@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReactorDepartment {
 
+  private final SecurityDepartment securityDepartment;
   private boolean isWorking;
   private int counterLaunch;
-  private final SecurityDepartment securityDepartment;
 
   /**
    * Метод - запустить реактор.
