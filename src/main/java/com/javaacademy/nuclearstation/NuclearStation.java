@@ -45,6 +45,7 @@ public class NuclearStation {
     log.info("Атомная станция закончила работу. За год Выработано {} киловатт/часов",
         amountOfEnergyGeneratedForYear);
     totalAmountOfEnergyGenerated = totalAmountOfEnergyGenerated.add(amountOfEnergyGeneratedForYear);
+    log.info("Количество инцидентов за год: {}", securityDepartment.getCountAccidents());
     securityDepartment.reset();
   }
 
