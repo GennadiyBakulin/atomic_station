@@ -2,17 +2,21 @@ package com.javaacademy.nuclearstation.reactordepartment;
 
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
+import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
 import java.math.BigDecimal;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
  * Класс - Реакторный цех.
  */
+@RequiredArgsConstructor
 @Component
 public class ReactorDepartment {
 
   private boolean isWorking;
   private int counterLaunch;
+  private final SecurityDepartment securityDepartment;
 
   /**
    * Метод - запустить реактор.
