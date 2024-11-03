@@ -29,4 +29,15 @@ public class SecurityDepartment {
   public int getCountAccidents() {
     return this.accidentCountPeriod;
   }
+
+  /**
+   * Метод сброс счетчика инцидентов.
+   * <p>
+   * Прибавляет инциденты из отдела безопасности в количество инцидентов за все время
+   * внутри атомной станции. Ставит 0 в поле accidentCountPeriod.
+   */
+  public void reset() {
+    nuclearStation.incrementAccident(accidentCountPeriod);
+    accidentCountPeriod = 0;
+  }
 }

@@ -68,7 +68,7 @@ public class NuclearStation {
    *
    * @param count - количество новых инцидентов.
    */
-  private void incrementAccident(int count) {
+  public void incrementAccident(int count) {
     accidentCountAllTime += count;
   }
 }
