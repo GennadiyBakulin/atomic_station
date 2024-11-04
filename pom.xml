@@ -29,23 +29,23 @@
       <optional>true</optional>
     </dependency>
   </dependencies>
-<!--  <profiles>-->
-<!--    <profile>-->
-<!--      <id>dev</id>-->
-<!--      <activation>-->
-<!--        <activeByDefault>true</activeByDefault>-->
-<!--      </activation>-->
-<!--      <properties>-->
-<!--        <spring.profiles.active>france</spring.profiles.active>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--    <profile>-->
-<!--      <id>prod</id>-->
-<!--      <properties>-->
-<!--        <spring.profiles.active>morocco</spring.profiles.active>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--  </profiles>-->
+  <profiles>
+    <profile>
+      <id>france</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <spring.profiles.active>france</spring.profiles.active>
+      </properties>
+    </profile>
+    <profile>
+      <id>morocco</id>
+      <properties>
+        <spring.profiles.active>morocco</spring.profiles.active>
+      </properties>
+    </profile>
+  </profiles>
 
   <build>
     <plugins>
