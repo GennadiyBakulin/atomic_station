@@ -1,5 +1,6 @@
 package com.javaacademy.nuclearstation;
 
+import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.ReactorDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
@@ -18,6 +19,7 @@ public class NuclearStation {
 
   private final SecurityDepartment securityDepartment;
   private final ReactorDepartment reactorDepartment;
+  private final EconomicDepartment economicDepartment;
   private long totalAmountOfEnergyGenerated;
   private int accidentCountAllTime;
 
