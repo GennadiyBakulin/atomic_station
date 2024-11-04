@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 
 public abstract class EconomicDepartment {
 
-  abstract BigDecimal computeYearIncomes(long countElectricity);
+  public abstract BigDecimal computeYearIncomes(long countElectricity);
 }
