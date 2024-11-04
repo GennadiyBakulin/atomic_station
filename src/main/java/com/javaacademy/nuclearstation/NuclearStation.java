@@ -7,6 +7,7 @@ import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkExc
 import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,6 +21,9 @@ public class NuclearStation {
   private final SecurityDepartment securityDepartment;
   private final ReactorDepartment reactorDepartment;
   private final EconomicDepartment economicDepartment;
+
+  private final Environment env;
+
   private long totalAmountOfEnergyGenerated;
   private int accidentCountAllTime;
 
@@ -53,6 +57,13 @@ public class NuclearStation {
    * @param year - количество лет работы станции.
    */
   public void start(int year) {
+    if (env.getActiveProfiles()[0].equals("france")) {
+      log.info("Действие происходит в стране: {}", env.getProperty("france.name-country"));
+    }
+    if (env.getActiveProfiles()[0].equals("morocco")) {
+      log.info("Действие происходит в стране: {}", env.getProperty("morocco.name-country"));
+    }
+
     for (int i = 0; i < year; i++) {
       startYear();
     }
