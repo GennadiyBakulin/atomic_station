@@ -46,6 +46,10 @@ public class NuclearStation {
     }
     log.info("Атомная станция закончила работу. За год Выработано {} киловатт/часов",
         amountOfEnergyGeneratedForYear);
+    log.info("Доход за год составил {} {}",
+        economicDepartment.computeYearIncomes(amountOfEnergyGeneratedForYear),
+        env.getActiveProfiles()[0].equals("france") ? env.getProperty("france.currency")
+            : env.getProperty("morocco.currency"));
     totalAmountOfEnergyGenerated += amountOfEnergyGeneratedForYear;
     log.info("Количество инцидентов за год: {}", securityDepartment.getCountAccidents());
     securityDepartment.reset();
