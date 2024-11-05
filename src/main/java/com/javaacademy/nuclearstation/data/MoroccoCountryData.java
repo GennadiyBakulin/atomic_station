@@ -5,16 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
-@ConfigurationProperties(prefix = "france")
+@ConfigurationProperties(prefix = "morocco")
 @Configuration
 @Getter
 @Setter
-public class FranceData {
+@Profile("morocco")
+public class MoroccoCountryData extends CountryDataBasic {
 
-  private String nameCountry;
-  private BigDecimal price;
-  private BigDecimal percentage;
-  private String currency;
-
+  private BigDecimal priceIncreased;
 }

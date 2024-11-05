@@ -6,10 +6,10 @@ france:
 
 morocco:
   name-country: Morocco
-  price-base: 5
+  price: 5
   price-increased: 6
   currency: dirham
 
 spring:
   profiles:
-    active: france
+    active: morocco
