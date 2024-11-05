@@ -1,11 +1,12 @@
 package com.javaacademy.nuclearstation;
 
-import com.javaacademy.nuclearstation.data.CountryDataBasic;
+import com.javaacademy.nuclearstation.countrydata.CountryDataBasic;
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.ReactorDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
 import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
+import java.math.RoundingMode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -46,7 +47,8 @@ public class NuclearStation {
     log.info("Атомная станция закончила работу. За год Выработано {} киловатт/часов",
         amountOfEnergyGeneratedForYear);
     log.info("Доход за год составил {} {}",
-        economicDepartment.computeYearIncomes(amountOfEnergyGeneratedForYear),
+        economicDepartment.computeYearIncomes(amountOfEnergyGeneratedForYear)
+            .setScale(2, RoundingMode.HALF_EVEN),
         data.getCurrency());
     totalAmountOfEnergyGenerated += amountOfEnergyGeneratedForYear;
     log.info("Количество инцидентов за год: {}", securityDepartment.getCountAccidents());
@@ -60,7 +62,6 @@ public class NuclearStation {
    */
   public void start(int year) {
     log.info("Действие происходит в стране: {}", data.getNameCountry());
-
     for (int i = 0; i < year; i++) {
       startYear();
     }
@@ -73,6 +74,6 @@ public class NuclearStation {
    * @param count - количество новых инцидентов.
    */
   public void incrementAccident(int count) {
-    this.accidentCountAllTime += count;
+    accidentCountAllTime += count;
   }
 }

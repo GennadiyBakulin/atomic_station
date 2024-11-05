@@ -1,4 +1,4 @@
-package com.javaacademy.nuclearstation.data;
+package com.javaacademy.nuclearstation.countrydata;
 
 import java.math.BigDecimal;
 import lombok.Getter;

@@ -32,7 +32,7 @@ public class SecurityDepartment {
   /**
    * Метод получения инцидентов за период.
    *
-   * @return - количество инцидентов за все время.
+   * @return - количество инцидентов за период.
    */
   public int getCountAccidents() {
     return accidentCountPeriod;

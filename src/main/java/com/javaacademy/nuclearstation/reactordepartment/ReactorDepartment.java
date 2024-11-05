@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReactorDepartment {
 
+  private static final long DAILY_POWER_GENERATION = 10_000_000L;
+
   private final SecurityDepartment securityDepartment;
   private boolean isWorking;
   private int counterLaunch;
@@ -30,7 +32,7 @@ public class ReactorDepartment {
     counterLaunch++;
     checkEveryHundredRuns();
     isWorking = true;
-    return 10_000_000;
+    return DAILY_POWER_GENERATION;
   }
 
   /**
@@ -62,8 +64,8 @@ public class ReactorDepartment {
    */
   private void checkEveryHundredRuns() throws NuclearFuelIsEmptyException {
     if (counterLaunch == 100) {
-      counterLaunch = 0;
       securityDepartment.addAccident();
+      counterLaunch = 0;
       throw new NuclearFuelIsEmptyException();
     }
   }
