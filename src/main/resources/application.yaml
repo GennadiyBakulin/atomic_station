@@ -9,3 +9,7 @@ morocco:
   price-base: 5
   price-increased: 6
   currency: dirham
+
+spring:
+  profiles:
+    active: france
