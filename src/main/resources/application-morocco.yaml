@@ -1,5 +1,4 @@
-country:
-  name: Morocco
-  price: 5
-  price-increased: 6
-  currency: dirham
+name: Morocco
+price: 5
+price-increased: 6
+currency: dirham

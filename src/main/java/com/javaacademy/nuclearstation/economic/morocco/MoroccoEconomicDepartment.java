@@ -1,6 +1,6 @@
 package com.javaacademy.nuclearstation.economic.morocco;
 
-import com.javaacademy.nuclearstation.countrydata.MoroccoCountryData;
+import com.javaacademy.nuclearstation.data.MoroccoData;
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class MoroccoEconomicDepartment extends EconomicDepartment {
 
   private static final long FIVE_BILLION_KILOWATT_HOURS = 5_000_000_000L;
-  private final MoroccoCountryData moroccoData;
+  private final MoroccoData moroccoData;
 
   /**
    * Абстрактный метод расчета дохода от произведенной энергии.

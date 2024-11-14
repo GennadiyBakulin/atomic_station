@@ -1,6 +1,6 @@
 package com.javaacademy.nuclearstation;
 
-import com.javaacademy.nuclearstation.countrydata.CountryDataBasic;
+import com.javaacademy.nuclearstation.data.Data;
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.ReactorDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
@@ -22,7 +22,7 @@ public class NuclearStation {
   private final SecurityDepartment securityDepartment;
   private final ReactorDepartment reactorDepartment;
   private final EconomicDepartment economicDepartment;
-  private final CountryDataBasic data;
+  private final Data data;
 
   private long totalAmountOfEnergyGenerated;
   private int accidentCountAllTime;
@@ -61,7 +61,7 @@ public class NuclearStation {
    * @param year - количество лет работы станции.
    */
   public void start(int year) {
-    log.info("Действие происходит в стране: {}", data.getNameCountry());
+    log.info("Действие происходит в стране: {}", data.getName());
     for (int i = 0; i < year; i++) {
       startYear();
     }

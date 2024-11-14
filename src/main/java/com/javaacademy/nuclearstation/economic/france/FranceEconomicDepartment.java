@@ -1,6 +1,6 @@
 package com.javaacademy.nuclearstation.economic.france;
 
-import com.javaacademy.nuclearstation.countrydata.FranceCountryData;
+import com.javaacademy.nuclearstation.data.FranceData;
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class FranceEconomicDepartment extends EconomicDepartment {
 
   private static final long BILLION_KILOWATT_HOURS = 1_000_000_000L;
-  private final FranceCountryData franceData;
+  private final FranceData franceData;
 
   /**
    * Абстрактный метод расчета дохода от произведенной энергии.

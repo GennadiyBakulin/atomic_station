@@ -1,4 +1,4 @@
-package com.javaacademy.nuclearstation.countrydata;
+package com.javaacademy.nuclearstation.data;
 
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -8,11 +8,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Profile("france")
-@ConfigurationProperties(prefix = "france")
+@ConfigurationProperties
 @Component
 @Getter
 @Setter
-public class FranceCountryData extends CountryDataBasic {
+public class FranceData extends Data {
 
+  private BigDecimal price;
   private BigDecimal percentage;
 }

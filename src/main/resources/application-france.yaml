@@ -1,5 +1,4 @@
-country:
-  name: France
-  price: 0.5
-  percentage: 0.99
-  currency: euro
+name: France
+price: 0.5
+percentage: 0.99
+currency: euro
