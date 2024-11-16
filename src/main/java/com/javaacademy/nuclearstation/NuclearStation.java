@@ -1,6 +1,5 @@
 package com.javaacademy.nuclearstation;
 
-import com.javaacademy.nuclearstation.data.Data;
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.ReactorDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
@@ -9,6 +8,7 @@ import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
 import java.math.RoundingMode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,7 +22,11 @@ public class NuclearStation {
   private final SecurityDepartment securityDepartment;
   private final ReactorDepartment reactorDepartment;
   private final EconomicDepartment economicDepartment;
-  private final Data data;
+
+  @Value("${name}")
+  private String nameCountry;
+  @Value("${currency}")
+  private String currencyCountry;
 
   private long totalAmountOfEnergyGenerated;
   private int accidentCountAllTime;
@@ -49,7 +53,7 @@ public class NuclearStation {
     log.info("Доход за год составил {} {}",
         economicDepartment.computeYearIncomes(amountOfEnergyGeneratedForYear)
             .setScale(2, RoundingMode.HALF_EVEN),
-        data.getCurrency());
+        currencyCountry);
     totalAmountOfEnergyGenerated += amountOfEnergyGeneratedForYear;
     log.info("Количество инцидентов за год: {}", securityDepartment.getCountAccidents());
     securityDepartment.reset();
@@ -61,7 +65,7 @@ public class NuclearStation {
    * @param year - количество лет работы станции.
    */
   public void start(int year) {
-    log.info("Действие происходит в стране: {}", data.getName());
+    log.info("Действие происходит в стране: {}", nameCountry);
     for (int i = 0; i < year; i++) {
       startYear();
     }

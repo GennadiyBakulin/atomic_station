@@ -1,9 +1,9 @@
 package com.javaacademy.nuclearstation.economic.france;
 
-import com.javaacademy.nuclearstation.data.FranceData;
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,11 @@ import org.springframework.stereotype.Component;
 public class FranceEconomicDepartment extends EconomicDepartment {
 
   private static final long BILLION_KILOWATT_HOURS = 1_000_000_000L;
-  private final FranceData franceData;
+
+  @Value("${price}")
+  private BigDecimal price;
+  @Value("${percentage}")
+  private BigDecimal percentage;
 
   /**
    * Абстрактный метод расчета дохода от произведенной энергии.
@@ -50,7 +54,7 @@ public class FranceEconomicDepartment extends EconomicDepartment {
    */
   private BigDecimal computeIncomes(long countElectricity, int indexNextBillionKilowatt) {
     return BigDecimal.valueOf(countElectricity)
-        .multiply(franceData.getPrice())
-        .multiply(franceData.getPercentage().pow(indexNextBillionKilowatt));
+        .multiply(price)
+        .multiply(percentage.pow(indexNextBillionKilowatt));
   }
 }

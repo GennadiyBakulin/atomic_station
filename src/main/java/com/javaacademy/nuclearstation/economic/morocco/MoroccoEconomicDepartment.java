@@ -1,9 +1,9 @@
 package com.javaacademy.nuclearstation.economic.morocco;
 
-import com.javaacademy.nuclearstation.data.MoroccoData;
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,11 @@ import org.springframework.stereotype.Component;
 public class MoroccoEconomicDepartment extends EconomicDepartment {
 
   private static final long FIVE_BILLION_KILOWATT_HOURS = 5_000_000_000L;
-  private final MoroccoData moroccoData;
+
+  @Value("${price}")
+  private BigDecimal price;
+  @Value("${price-increased}")
+  private BigDecimal priceIncreased;
 
   /**
    * Абстрактный метод расчета дохода от произведенной энергии.
@@ -28,13 +32,13 @@ public class MoroccoEconomicDepartment extends EconomicDepartment {
   public BigDecimal computeYearIncomes(long countElectricity) {
 
     if (countElectricity <= FIVE_BILLION_KILOWATT_HOURS) {
-      return computeIncomes(countElectricity, moroccoData.getPrice());
+      return computeIncomes(countElectricity, price);
     }
 
-    return computeIncomes(FIVE_BILLION_KILOWATT_HOURS, moroccoData.getPrice())
+    return computeIncomes(FIVE_BILLION_KILOWATT_HOURS, price)
         .add(
             computeIncomes(countElectricity - FIVE_BILLION_KILOWATT_HOURS,
-                moroccoData.getPriceIncreased()));
+                priceIncreased));
   }
 
   /**
