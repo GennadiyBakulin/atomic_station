@@ -1,5 +1,6 @@
-package com.javaacademy.nuclearstation.reactordepartment;
+package com.javaacademy.nuclearstation.reactordepartment.unit;
 
+import com.javaacademy.nuclearstation.reactordepartment.ReactorDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
 import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
