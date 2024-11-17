@@ -2,6 +2,7 @@ package com.javaacademy.nuclearstation.economic.morocco;
 
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ class MoroccoEconomicDepartmentTest {
   private MoroccoEconomicDepartment moroccoEconomicDepartment;
 
   @ParameterizedTest
-  @CsvFileSource(resources = "/morocco-compute-year-incomes.csv", numLinesToSkip = 1, delimiterString = ";")
+  @CsvFileSource(resources = "/economic/morocco-compute-year-incomes.csv", numLinesToSkip = 1, delimiterString = ";")
+  @DisplayName("Расчет дохода от количества выработанной энергии")
   void successComputeYearIncomes(long countElectricity, BigDecimal expected) {
     BigDecimal result = moroccoEconomicDepartment.computeYearIncomes(countElectricity);
     Assertions.assertEquals(expected, result);

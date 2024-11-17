@@ -1,11 +1,11 @@
-package com.javaacademy.nuclearstation.reactordepartment.integration;
+package com.javaacademy.nuclearstation.reactordepartment;
 
-import com.javaacademy.nuclearstation.reactordepartment.ReactorDepartment;
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
 import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,12 +18,12 @@ public class ReactorDepartmentIT {
 
   @Autowired
   private ReactorDepartment reactorDepartment;
-
   @Autowired
   private SecurityDepartment securityDepartment;
 
   @Test
   @SneakyThrows
+  @DisplayName("Попытка запуска работающего реактора добавило инцидент")
   void successAddAccidentWhenRunWorkingReactor() {
     int countStart = securityDepartment.getCountAccidents();
     reactorDepartment.run();
@@ -37,6 +37,7 @@ public class ReactorDepartmentIT {
 
   @Test
   @SneakyThrows
+  @DisplayName("Попытка запуска реактора сотый раз добавило инцидент")
   void successAddAccidentWhenHundredthTimeRunReactor() {
     int countStart = securityDepartment.getCountAccidents();
     try {
@@ -52,6 +53,7 @@ public class ReactorDepartmentIT {
 
   @Test
   @SneakyThrows
+  @DisplayName("Попытка остановки не работающего реактора добавило инцидент")
   void successAddAccidentWhenStopStoppedReactor() {
     int countStart = securityDepartment.getCountAccidents();
     try {
