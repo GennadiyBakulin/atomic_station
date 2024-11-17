@@ -2,13 +2,11 @@ package com.javaacademy.nuclearstation.reactordepartment;
 
 import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsEmptyException;
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
-import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
@@ -20,9 +18,6 @@ class ReactorDepartmentTest {
 
   @Autowired
   private ReactorDepartment reactorDepartment;
-
-  @MockBean
-  private SecurityDepartment securityDepartment;
 
   @Test
   @SneakyThrows
