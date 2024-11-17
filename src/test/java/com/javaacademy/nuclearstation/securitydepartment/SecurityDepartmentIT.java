@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.MethodMode;
 
 @SpringBootTest
 public class SecurityDepartmentIT {
@@ -17,6 +19,7 @@ public class SecurityDepartmentIT {
 
   @Test
   @DisplayName("Увеличение счетчика инцидентов за все время работы станции")
+  @DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
   void successReset() {
     securityDepartment.addAccident();
     securityDepartment.addAccident();
