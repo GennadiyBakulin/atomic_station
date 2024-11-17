@@ -16,8 +16,6 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class ReactorDepartmentIT {
 
-  private static final long DAILY_POWER_GENERATION = 10_000_000L;
-
   @Autowired
   private ReactorDepartment reactorDepartment;
 
@@ -32,9 +30,9 @@ public class ReactorDepartmentIT {
     try {
       reactorDepartment.run();
     } catch (ReactorWorkException e) {
-      int countEnd = securityDepartment.getCountAccidents();
-      Assertions.assertEquals(1, countEnd - countStart);
     }
+    int countEnd = securityDepartment.getCountAccidents();
+    Assertions.assertEquals(1, countEnd - countStart);
   }
 
   @Test
@@ -42,14 +40,14 @@ public class ReactorDepartmentIT {
   void successAddAccidentWhenHundredthTimeRunReactor() {
     int countStart = securityDepartment.getCountAccidents();
     try {
-      for (int i = 0; i < 99; i++) {
+      for (int i = 0; i < 100; i++) {
         reactorDepartment.run();
         reactorDepartment.stop();
       }
     } catch (NuclearFuelIsEmptyException e) {
-      int countEnd = securityDepartment.getCountAccidents();
-      Assertions.assertEquals(1, countEnd - countStart);
     }
+    int countEnd = securityDepartment.getCountAccidents();
+    Assertions.assertEquals(1, countEnd - countStart);
   }
 
   @Test
@@ -59,8 +57,8 @@ public class ReactorDepartmentIT {
     try {
       reactorDepartment.stop();
     } catch (ReactorWorkException e) {
-      int countEnd = securityDepartment.getCountAccidents();
-      Assertions.assertEquals(1, countEnd - countStart);
     }
+    int countEnd = securityDepartment.getCountAccidents();
+    Assertions.assertEquals(1, countEnd - countStart);
   }
 }
