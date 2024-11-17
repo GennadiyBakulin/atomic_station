@@ -6,6 +6,7 @@ import com.javaacademy.nuclearstation.reactordepartment.exception.NuclearFuelIsE
 import com.javaacademy.nuclearstation.reactordepartment.exception.ReactorWorkException;
 import com.javaacademy.nuclearstation.securitydepartment.SecurityDepartment;
 import java.math.RoundingMode;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,8 +29,10 @@ public class NuclearStation {
   @Value("${currency}")
   private String currencyCountry;
 
+  @Getter
   private long totalAmountOfEnergyGenerated;
-  private int accidentCountAllTime;
+  @Getter
+  private int countAccidentAllTime;
 
   /**
    * Метод - запуска годового цикла работы станции.
@@ -69,7 +72,7 @@ public class NuclearStation {
     for (int i = 0; i < year; i++) {
       startYear();
     }
-    log.info("Количество инцидентов за всю работу станции: {}", accidentCountAllTime);
+    log.info("Количество инцидентов за всю работу станции: {}", countAccidentAllTime);
   }
 
   /**
@@ -78,6 +81,6 @@ public class NuclearStation {
    * @param count - количество новых инцидентов.
    */
   public void incrementAccident(int count) {
-    accidentCountAllTime += count;
+    countAccidentAllTime += count;
   }
 }
