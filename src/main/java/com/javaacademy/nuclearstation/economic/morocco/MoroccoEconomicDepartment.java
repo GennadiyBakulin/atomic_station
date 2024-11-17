@@ -2,6 +2,7 @@ package com.javaacademy.nuclearstation.economic.morocco;
 
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
@@ -32,13 +33,15 @@ public class MoroccoEconomicDepartment extends EconomicDepartment {
   public BigDecimal computeYearIncomes(long countElectricity) {
 
     if (countElectricity <= FIVE_BILLION_KILOWATT_HOURS) {
-      return computeIncomes(countElectricity, price);
+      return computeIncomes(countElectricity, price)
+          .setScale(2, RoundingMode.HALF_EVEN);
     }
 
     return computeIncomes(FIVE_BILLION_KILOWATT_HOURS, price)
         .add(
             computeIncomes(countElectricity - FIVE_BILLION_KILOWATT_HOURS,
-                priceIncreased));
+                priceIncreased))
+        .setScale(2, RoundingMode.HALF_EVEN);
   }
 
   /**

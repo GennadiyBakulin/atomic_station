@@ -2,7 +2,9 @@ package com.javaacademy.nuclearstation.economic.france;
 
 import com.javaacademy.nuclearstation.economic.EconomicDepartment;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * Класс FranceEconomicDepartment.
  */
+@Slf4j
 @Profile(value = "france")
 @Component
 @RequiredArgsConstructor
@@ -42,7 +45,7 @@ public class FranceEconomicDepartment extends EconomicDepartment {
       countElectricity -= BILLION_KILOWATT_HOURS;
       indexNextBillionKilowatt++;
     }
-    return income;
+    return income.setScale(2, RoundingMode.HALF_EVEN);
   }
 
   /**
@@ -55,6 +58,7 @@ public class FranceEconomicDepartment extends EconomicDepartment {
   private BigDecimal computeIncomes(long countElectricity, int indexNextBillionKilowatt) {
     return BigDecimal.valueOf(countElectricity)
         .multiply(price)
-        .multiply(percentage.pow(indexNextBillionKilowatt));
+        .multiply(percentage.pow(indexNextBillionKilowatt))
+        .setScale(2, RoundingMode.HALF_EVEN);
   }
 }
